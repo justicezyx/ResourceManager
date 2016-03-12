@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package service;
+
+service ResourceManager {
+  rpc Reserve(ResourceRequest) returns (ResourceReservation) {}
+}
+
+message ResourceRequest {
+  string uid = 1;
+}
+
+message ResourceReservation {
+  string uid = 1;
+}
