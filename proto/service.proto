@@ -13,3 +13,15 @@ message ResourceRequest {
 message ResourceReservation {
   string uid = 1;
 }
+
+message ResourceUnit {
+  int32 cpu = 1 [default: 0];
+  int32 memory = 2 [default: 0];
+  int64 disk = 3 [default: 0];
+}
+
+// A group of machines that each of them can provide the resource specified in resource_unit.
+message ReservationGroup {
+  ResourceUnit resource_unit = 1;
+  repeated string machines = 2;
+}

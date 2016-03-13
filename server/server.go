@@ -10,7 +10,6 @@ import (
 	"golang.org/x/net/context"
 
 	service_pb "github.com/justicezyx/ResourceManager/proto"
-	"github.com/justicezyx/ResourceManager/server"
 )
 
 func NewServer() *resourceManagerServer {
@@ -18,12 +17,12 @@ func NewServer() *resourceManagerServer {
 }
 
 func StartServer(port int) {
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 	if err != nil {
 		grpclog.Fatalf("failed to listen: %v", err)
 	}
 	grpcServer := grpc.NewServer([]grpc.ServerOption{}...)
-	service_pb.RegisterResourceManagerServer(grpcServer, server.NewServer())
+	service_pb.RegisterResourceManagerServer(grpcServer, NewServer())
 	grpcServer.Serve(lis)
 }
 
