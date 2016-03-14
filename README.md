@@ -1,4 +1,7 @@
 # ResourceManager
+
+## Overview
+
 Allocates requested resources from a pool of machines
 
 Resource Manager provides central APIs for users to request resources.
@@ -22,3 +25,8 @@ A higher level of scheduling unit can be defined. For example, we can define a
 scheduling unit called networking group, which comprises multiple machines that
 are in a high-speed network. The scheduler must make sure that all scheduling
 units are placed inside 1 single network.
+
+## Persistent storage
+
+ResourceManager stores its data in ChainReplicationStorage server. Each
+ResourceManager instance colocates with a ChainReplicatStoage instance.
